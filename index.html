@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CommerceAI - AI电商内容生成器 | 抖音/淘宝/小红书爆款文案</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-purple-600">CommerceAI</div>
+      <div class="space-x-4">
+        <a href="#features" class="text-gray-600 hover:text-purple-600">功能</a>
+        <a href="#demo" class="text-gray-600 hover:text-purple-600">试用</a>
+        <a href="#pricing" class="bg-purple-600 text-white px-4 py-2 rounded-lg">开始使用</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="gradient-bg text-white py-20">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h1 class="text-5xl font-bold mb-6">一键生成爆款电商文案</h1>
+      <p class="text-xl mb-8 opacity-90">专为抖音、淘宝、小红书、Shopify卖家打造的AI内容工具。产品标题、详情描述、短视频脚本，秒级生成高转化内容。</p>
+      <a href="#demo" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100">免费试用生成</a>
+    </div>
+  </section>
+
+  <section id="features" class="py-16 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">为什么选择 CommerceAI？</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <div class="text-4xl mb-4">🚀</div>
+        <h3 class="text-xl font-semibold mb-2">平台专属优化</h3>
+        <p class="text-gray-600">针对抖音算法、淘宝搜索、小红书种草、亚马逊SEO分别优化内容风格与关键词。</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-xl font-semibold mb-2">秒级生成</h3>
+        <p class="text-gray-600">输入产品信息，AI立即输出多版标题、详情页文案、短视频口播脚本。</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <div class="text-4xl mb-4">💰</div>
+        <h3 class="text-xl font-semibold mb-2">提升转化率</h3>
+        <p class="text-gray-600">基于高转化案例训练的提示词系统，帮助卖家节省文案时间，提高销量。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">立即试用</h2>
+      <div class="bg-gray-50 p-8 rounded-xl">
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">产品名称</label>
+          <input id="productName" type="text" class="w-full px-4 py-3 border rounded-lg" placeholder="例如：智能无线耳机">
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">核心卖点（用逗号分隔）</label>
+          <input id="features" type="text" class="w-full px-4 py-3 border rounded-lg" placeholder="例如：降噪、30小时续航、防水">
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-medium mb-2">目标平台</label>
+          <select id="platform" class="w-full px-4 py-3 border rounded-lg">
+            <option>抖音短视频</option>
+            <option>淘宝详情页</option>
+            <option>小红书种草</option>
+            <option>Shopify / Amazon</option>
+          </select>
+        </div>
+        <button onclick="generateContent()" class="w-full bg-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-purple-700">生成内容</button>
+        <div id="output" class="mt-8 p-6 bg-white border rounded-lg hidden">
+          <h3 class="font-semibold mb-4">生成结果：</h3>
+          <div id="result" class="whitespace-pre-wrap text-gray-700"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="py-16 max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-8">简单定价</h2>
+    <div class="bg-white p-8 rounded-xl shadow-lg inline-block">
+      <div class="text-4xl font-bold text-purple-600 mb-2">¥99<span class="text-lg text-gray-500">/月</span></div>
+      <p class="text-gray-600 mb-6">无限生成 · 多平台模板 · 优先支持</p>
+      <button class="bg-purple-600 text-white px-8 py-3 rounded-lg">即将上线 - 加入等待列表</button>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-8 text-center">
+    <p>© 2026 CommerceAI · Project 2B · 合法合规AI工具</p>
+  </footer>
+
+  <script>
+    function generateContent() {
+      const name = document.getElementById('productName').value || '智能产品';
+      const features = document.getElementById('features').value || '高品质、性价比高';
+      const platform = document.getElementById('platform').value;
+      
+      let result = '';
+      if (platform.includes('抖音')) {
+        result = `【抖音短视频脚本】\n\n开场钩子：\n“姐妹们！这款${name}真的绝了！${features.split(',')[0]}直接封神！”\n\n痛点引入：\n“以前用的耳机总是断连、续航差，直到遇到它...”\n\n卖点展示：\n“支持${features}，戴上瞬间安静世界，出门再也不怕没电！”\n\n行动号召：\n“点击下方链接，限时优惠，库存不多了！#${name} #好物推荐”`;
+      } else if (platform.includes('淘宝')) {
+        result = `【淘宝产品标题】\n${name} ${features.replace(/,/g, ' ')} 正品保障 包邮\n\n【详情页描述】\n这款${name}专为追求品质生活的你设计。核心优势：${features}。\n采用先进技术，确保稳定性能与出色体验。适合日常使用与专业场景。\n立即购买，享受优质售后服务！`;
+      } else {
+        result = `【${platform}内容】\n产品：${name}\n卖点：${features}\n\n优化文案：突出${features.split(',')[0]}优势，结合平台风格生成高转化内容。详细版本即将通过完整AI模型提供。`;
+      }
+      
+      document.getElementById('result').textContent = result;
+      document.getElementById('output').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
